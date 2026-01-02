@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb://localhost:27017/contact-keeper",
+  "mongoURI": "mongodb+srv://Swati:Swati00@cluster0.hbbfcna.mongodb.net/contactmanager?retryWrites=true&w=majority",
   "jwtSecret": "your_jwt_secret_key"
 }

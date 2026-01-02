@@ -15,20 +15,18 @@ import {
   CONTACT_ERROR
 } from '../types';
 
-// Create a custom hook to use the contact context
+const API_URL =
+  process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export const useContacts = () => {
   const { state, dispatch } = useContext(ContactContext);
   return [state, dispatch];
 };
 
-// Action creators
-// NOTE: These could be moved to a separate file like in redux but they remain here for ease of students transitioning
 
-// Get Contacts
 export const getContacts = async (dispatch) => {
   try {
-    const res = await axios.get('/api/contacts');
+    const res = await axios.get(`${API_URL}/api/contacts`);
 
     dispatch({
       type: GET_CONTACTS,
@@ -37,15 +35,22 @@ export const getContacts = async (dispatch) => {
   } catch (err) {
     dispatch({
       type: CONTACT_ERROR,
-      payload: err.response.msg
+      payload: err.response?.data?.msg || err.message
     });
   }
 };
 
-// Add Contact
 export const addContact = async (dispatch, contact) => {
   try {
-    const res = await axios.post('/api/contacts', contact);
+    const res = await axios.post(
+      `${API_URL}/api/contacts`,
+      contact,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
 
     dispatch({
       type: ADD_CONTACT,
@@ -54,15 +59,15 @@ export const addContact = async (dispatch, contact) => {
   } catch (err) {
     dispatch({
       type: CONTACT_ERROR,
-      payload: err.response.msg
+      payload: err.response?.data?.msg || err.message
     });
   }
 };
 
-// Delete Contact
+
 export const deleteContact = async (dispatch, id) => {
   try {
-    await axios.delete(`/api/contacts/${id}`);
+    await axios.delete(`${API_URL}/api/contacts/${id}`);
 
     dispatch({
       type: DELETE_CONTACT,
@@ -71,15 +76,22 @@ export const deleteContact = async (dispatch, id) => {
   } catch (err) {
     dispatch({
       type: CONTACT_ERROR,
-      payload: err.response.msg
+      payload: err.response?.data?.msg || err.message
     });
   }
 };
 
-// Update Contact
 export const updateContact = async (dispatch, contact) => {
   try {
-    const res = await axios.put(`/api/contacts/${contact._id}`, contact);
+    const res = await axios.put(
+      `${API_URL}/api/contacts/${contact._id}`,
+      contact,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
 
     dispatch({
       type: UPDATE_CONTACT,
@@ -88,39 +100,35 @@ export const updateContact = async (dispatch, contact) => {
   } catch (err) {
     dispatch({
       type: CONTACT_ERROR,
-      payload: err.response.msg
+      payload: err.response?.data?.msg || err.message
     });
   }
 };
 
-// Clear Contacts
 export const clearContacts = (dispatch) => {
   dispatch({ type: CLEAR_CONTACTS });
 };
 
-// Set Current Contact
 export const setCurrent = (dispatch, contact) => {
   dispatch({ type: SET_CURRENT, payload: contact });
 };
 
-// Clear Current Contact
 export const clearCurrent = (dispatch) => {
   dispatch({ type: CLEAR_CURRENT });
 };
 
-// Filter Contacts
 export const filterContacts = (dispatch, text) => {
   dispatch({ type: FILTER_CONTACTS, payload: text });
 };
 
-// Clear Filter
 export const clearFilter = (dispatch) => {
   dispatch({ type: CLEAR_FILTER });
 };
 
+
 const ContactState = (props) => {
   const initialState = {
-    contacts: null,
+    contacts: [],
     current: null,
     filtered: null,
     error: null
@@ -129,7 +137,7 @@ const ContactState = (props) => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   return (
-    <ContactContext.Provider value={{ state: state, dispatch }}>
+    <ContactContext.Provider value={{ state, dispatch }}>
       {props.children}
     </ContactContext.Provider>
   );
