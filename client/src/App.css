@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* ================= ROOT ================= */
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1, #3b82f6);
+  --accent-gradient: linear-gradient(135deg, #22c55e, #16a34a);
+  --dark-bg: #0f172a;
+  --light-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --danger-color: #ef4444;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-soft: rgba(255, 255, 255, 0.25);
+}
+
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= BODY ================= */
+body {
+  background: radial-gradient(circle at top,
+      #eef2ff,
+      #f8fafc 60%);
+}
+
+/* ================= LINKS ================= */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1e40af;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 2.2rem;
+  background: var(--primary-gradient);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Logo */
+.navbar h1 a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.navbar h1 i {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px;
+  border-radius: 10px;
+}
+
+/* Tabs Container */
+.nav-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-soft);
+}
+
+/* Tab Item */
+.nav-tabs li {
+  list-style: none;
+}
+
+/* Tab Link */
+.nav-tabs a {
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #e0e7ff;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.nav-tabs a:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* Active Tab */
+.nav-tabs li.active a {
+  background: white;
+  color: #1e293b;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+/* ================= PAGE WRAPPER ================= */
+.page-wrapper {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+  animation: fadeUp 0.6s ease;
+}
+
+/* ================= CARD ================= */
+.modern-card {
+  width: 100%;
+  max-width: 560px;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+  animation: scaleIn 0.5s ease;
+}
+
+/* ================= TITLES ================= */
+.card-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.card-subtitle {
+  text-align: center;
+  margin-top: 0.4rem;
+  margin-bottom: 2rem;
+  color: #6b7280;
+}
+
+/* ================= FORM ================= */
+.modern-form input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.modern-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* ================= RADIO ================= */
+.radio-group {
+  margin: 1.5rem 0;
+}
+
+.radio-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.radio-options {
+  display: flex;
+  gap: 2rem;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+/* ================= BUTTONS ================= */
+.modern-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.modern-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: #111827;
+  margin-top: 0.6rem;
+}
+
+/* ================= SUCCESS MESSAGE ================= */
+.success-msg {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 0.8rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ================= CONTACTS PAGE ================= */
+.contacts-page {
+  max-width: 1000px;
+  margin: 2rem auto;
+  animation: fadeUp 0.6s ease;
+}
+
+/* ================= SEARCH ================= */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2rem;
+  display: block;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* ================= CONTACT GRID ================= */
+.contacts-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ================= CONTACT CARD ================= */
+.contact-card {
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  border-radius: 20px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.12);
+}
+
+/* Top Section */
+.contact-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Name */
+.contact-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+/* Info */
+.contact-info {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Badge */
+.badge {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Actions */
+.contact-actions {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* Buttons */
+.contact-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+/* Edit */
+.edit-btn {
+  background: #0f172a;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+}
+
+/* Delete */
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* ================= BADGE ================= */
+.badge {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge.personal {
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+  color: white;
+}
+
+.badge.professional {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+/* ================= ACTIONS ================= */
+.contact-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.edit-btn {
+  background: #111827;
+  color: #fff;
+}
+
+.delete-btn {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.btn {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95)
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 700px) {
+  .radio-options {
+    flex-direction: column;
+  }
+}
+
+/* ================= TOAST ================= */
+.toast {
+  position: fixed;
+  top: 90px;
+  right: 30px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  animation: toastSlide 0.4s ease;
+  z-index: 9999;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+@keyframes toastSlide {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
