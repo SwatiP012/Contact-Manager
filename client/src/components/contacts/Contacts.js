@@ -8,10 +8,8 @@ const Contacts = () => {
 
   useEffect(() => {
     getContacts(contactDispatch);
-    // eslint-disable-next-line
-  }, []);
+  }, [contactDispatch]);
 
-  // ⛔ IMPORTANT GUARD
   if (!contacts) {
     return <h4 style={{ textAlign: 'center' }}>Loading contacts...</h4>;
   }
@@ -20,9 +18,8 @@ const Contacts = () => {
     return <h4 style={{ textAlign: 'center' }}>No contacts found</h4>;
   }
 
-  // Alphabetical sorting
   const sortedContacts = [...(filtered || contacts)].sort((a, b) =>
-    a.name.localeCompare(b.name)
+    (a.name || '').localeCompare(b.name || '')
   );
 
   return (
