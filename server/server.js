@@ -6,16 +6,7 @@ const app = express();
 
 connectDB();
 
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'https://contact-manager-bbx78zyx5-swatis-projects-14af05e9.vercel.app'
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
-  })
-);
+app.use(cors());
 
 app.options('*', cors());
 
